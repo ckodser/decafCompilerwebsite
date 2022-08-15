@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Decaf Compiler</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico/">
+     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+</head>
+<body>
+<form action="/compile/" method="post">
+        <textarea id="input"  name = "code">
+int main(){
+    int i;
+    for(i=0;i<8;i+=1){
+        Print(i);
+    }
+}
+        </textarea>
+        <br>
+        <label for="completemips"> check for complete mips code (type chnage supports, ReadInput(), ...)</label>
+        <input type="checkbox" id="completemips" name="completemips" value="true">
+        <br>
+        <input type="submit" value="compile">
+</form>
+<script>
+function insertAtCursor(myField, myValue) {
+			//IE support
+			if (document.selection) {
+				myField.focus();
+				sel = document.selection.createRange();
+				sel.text = myValue;
+			}
+			//MOZILLA and others
+			else if (myField.selectionStart || myField.selectionStart == '0') {
+				var startPos = myField.selectionStart;
+				var endPos = myField.selectionEnd;
+				myField.value = myField.value.substring(0, startPos)
+					+ myValue
+					+ myField.value.substring(endPos, myField.value.length);
+				myField.selectionStart = startPos + myValue.length;
+				myField.selectionEnd = startPos + myValue.length;
+			} else {
+				myField.value += myValue;
+			}
+		}
+
+		function addTabSupport(elementID, tabString) {
+			// Get textarea element
+			var myInput = document.getElementById(elementID);
+
+			// At keydown: Add tab character at cursor location
+			function keyHandler(e) {
+				var TABKEY = 9;
+				if(e.keyCode == TABKEY) {
+					insertAtCursor(myInput, tabString);
+					if(e.preventDefault) {
+						e.preventDefault();
+					}
+					return false;
+				}
+			}
+
+			// Add keydown listener
+			if(myInput.addEventListener ) {
+				myInput.addEventListener('keydown',keyHandler,false);
+			} else if(myInput.attachEvent ) {
+				myInput.attachEvent('onkeydown',this.keyHandler); /* damn IE hack */
+			}
+		}
+
+    // easily add tab support to any textarea you like
+    addTabSupport("input", "\t");
+
+</script>
+</body>
+</html>

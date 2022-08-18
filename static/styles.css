@@ -1,11 +1,11 @@
 body {
-  background-color: #6c6a6a;
+  background-color: #95A5A6;
 }
 pre{
-  background-color: #c7c7c7;
+  background-color: #D6DBDF;
 }
 textarea{
-  background-color: #c7c7c7;
+  background-color: #D6DBDF;
   width: 70%;
     resize: none;
     overflow: hidden;
@@ -16,7 +16,7 @@ form {
   text-align: center;
 }
 footer {
-    background-color: darkgray;
+    background-color: #D6DBDF;
     width: 640px;
     margin: 0% -320px;
     position: fixed;

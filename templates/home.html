@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Decaf Compiler</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico/">
-     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <link rel="icon" type="image/x-icon" href="constant/favicon.ico/">
+    <link rel="stylesheet" href="/constant/styles.css">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body>
+
 <form action="/compile/" method="post">
-        <textarea id="input" rows = "30" cols = "100" name = "code">
+        <textarea id="input" name = "code" oninput="auto_grow(this)">
 int main(){
     int i;
     for(i=0;i<8;i+=1){
@@ -21,8 +23,18 @@ int main(){
         <input type="checkbox" id="completemips" name="completemips" value="true">
         <br>
         <input type="submit" value="compile">
+
 </form>
+<footer>
+    UI by Arshia Soltani, code is available in <a href="https://github.com/ckodser/decafCompilerwebsite"> decaf compiler website</a>
+    <br>
+    compiler code is available in <a href="https://github.com/Compiler-Design-2022/project-phase3-turn-it-on"> compiler engine</a>
+</footer>
 <script>
+    function auto_grow(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
+}
 function insertAtCursor(myField, myValue) {
 			//IE support
 			if (document.selection) {

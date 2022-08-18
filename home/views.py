@@ -9,3 +9,10 @@ def index(request):
 def favicon(request):
     image_data = open("static/favicon.ico", "rb").read()
     return HttpResponse(image_data, content_type="image/x-icon")
+
+def styles(request, location):
+    location = "static/" + location
+    print(location)
+    image_data = open(location, "rb").read()
+    if location.endswith("css"):
+        return HttpResponse(image_data, content_type="text/css")
